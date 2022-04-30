@@ -34,20 +34,30 @@ Crowdsource the nametags of EVM-based public addresses.
 #### Tables
 ```
 Tags  
------------------------------------------
-| id  | publickey | nametag | num_votes | 
------------------------------------------
+----------------------------------------------------------------
+| id  | publickey | nametag | creator_session | creator_pubkey |
+----------------------------------------------------------------
 
 Votes
 --------------------------------------------------------------
 | id  | tags_id | vote (enum) | voter_session | voter_pubkey |
 --------------------------------------------------------------
 ```  
-Should there be a `num_votes` column in the `Tags` table that is incremented/decremented everytime someone votes up/down/removes vote?
-Or is it better to just calculate the number of votes separately by querying the total upvotes and downvotes from the `Votes` table when displaying them to the user?
+
+#### Endpoints
+
+GET     `/api/{address}/tags`           Returns all nametags for a given address
+POST    `/api/{address}/tags`           Create a new nametag for a given address
+
+GET     `/api/{address}/votes`          Return all votes for all nametags of a given address
+GET     `/api/{address}/votes/{tagId}`  Returns all votes for a given address and nametag
+POST    `/api/{address}/votes/{tagId}`  Upvote/Downvote a given address and nametag
+DELETE  `/api/{address}/votes/{tagId}`  Delete a vote for a given address and nametag
+
 
 
 ## Open Questions
+* What are the moral/ethical implications here?
 * Which code should be public, which code should be private?
 * What licenses should be used for which pieces of code?
 * How to protect against scraping?  
