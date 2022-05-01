@@ -33,26 +33,31 @@ Crowdsource the nametags of EVM-based public addresses.
 ### Database
 #### Tables
 ```
+Addresses
+-------------
+| publickey |
+-------------
+
 Tags  
-----------------------------------------------------------------
-| id  | publickey | nametag | creator_session | creator_pubkey |
-----------------------------------------------------------------
+---------------------------------------
+| id  | addresses_publickey | nametag |
+---------------------------------------
 
 Votes
---------------------------------------------------------------
-| id  | tags_id | vote (enum) | voter_session | voter_pubkey |
---------------------------------------------------------------
+-------------------------------
+| id  | tags_id | vote (enum) |
+-------------------------------
 ```  
 
 #### Endpoints
 ```
-GET     `/api/{address}/tags`           Returns all nametags for a given address
-POST    `/api/{address}/tags`           Create a new nametag for a given address
+GET     /api/{address}/tags             Returns all nametags for a given address
+POST    /api/{address}/tags             Create a new nametag for a given address
 
-GET     `/api/{address}/votes`          Return all votes for all nametags of a given address
-GET     `/api/{address}/votes/{tagId}`  Returns all votes for a given address and nametag
-POST    `/api/{address}/votes/{tagId}`  Upvote/Downvote a given address and nametag
-DELETE  `/api/{address}/votes/{tagId}`  Delete a vote for a given address and nametag
+GET     /api/{address}/votes            Return all votes for all nametags of a given address
+GET     /api/{address}/votes/{tagId}    Returns all votes for a given address and nametag
+POST    /api/{address}/votes/{tagId}    Upvote/Downvote a given address and nametag
+DELETE  /api/{address}/votes/{tagId}    Delete a vote for a given address and nametag
 ```
 
 
