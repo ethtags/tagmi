@@ -51,13 +51,13 @@ Votes
 
 #### Endpoints
 ```
-GET     /{address}/tags             Returns all nametags for a given address
-POST    /{address}/tags             Create a new nametag for a given address
+GET     /{address}/tags                   Return all nametags and their votes for a given address
+POST    /{address}/tags                   Create a new nametag for a given address and auto-upvote it
 
-GET     /{address}/votes            Return all votes for all nametags of a given address
-GET     /{address}/votes/{tagId}    Returns all votes for a given address and nametag
-POST    /{address}/votes/{tagId}    Upvote/Downvote a given address and nametag
-DELETE  /{address}/votes/{tagId}    Delete a vote for a given address and nametag
+GET     /{address}/tags/{tag_id}/votes    Return all votes for all nametags of a given address
+GET     /{address}/tags/{tag_id}/votes    Returns all votes for a given address and nametag
+POST    /{address}/tags/{tag_id}/votes    Upvote/Downvote a given address and nametag
+DELETE  /{address}/tags/{tag_id}/votes    Delete a vote for a given address and nametag
 ```
 
 
