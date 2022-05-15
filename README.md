@@ -104,10 +104,75 @@ POST    /{address}/tags                   Create a new nametag for a given addre
         }
 
 
-GET     /{address}/tags/{tag_id}/votes    Return all votes for all nametags of a given address
 GET     /{address}/tags/{tag_id}/votes    Returns all votes for a given address and nametag
+    Request Body
+        {}
+    
+    Response Body
+        [
+            {
+                "id": 1,
+                "value": true,
+                "owned": false
+            },
+            {
+                "id": 2,
+                "value": true,
+                "owned": false
+            },
+            {
+                "id": 3,
+                "value": true,
+                "owned": true
+            }
+        ]
+
 POST    /{address}/tags/{tag_id}/votes    Upvote/Downvote a given address and nametag
-DELETE  /{address}/tags/{tag_id}/votes    Delete a vote for a given address and nametag
+    Request Body
+        {
+            "value": true
+        }
+
+    Response Body
+        {
+            "id": 2,
+            "value": true,
+            "owned": true
+        }
+
+
+GET     /{address}/votes/{vote_id}        Returns specific vote
+    Request Body
+        {}
+
+    Response Body
+        {
+            "id": 1,
+            "value": true,
+            "owned": true
+        }
+
+
+UPDATE  /{address}/votes/{vote_id}        Update a vote for a given address and nametag, must have been created by the requestor
+    Request Body
+        {
+            "value": false
+        }
+
+    Response Body
+        {
+            "id": 1,
+            "value": false,
+            "owned": true
+        }
+
+
+DELETE  /{address}/votes/{vote_id}        Delete a vote for a given address and nametag, must have been created by the requestor
+    Request Body
+        {}
+
+    Response Body
+        {}
 ```
 
 
