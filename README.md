@@ -51,8 +51,58 @@ Votes
 
 #### Endpoints
 ```
-GET     /{address}/tags                   Return all nametags and their votes for a given address
+GET     /{address}/tags                   Return all nametags and their votes for a given address  
+    Request Body  
+        {}  
+
+    Response Body  
+        [
+            {
+                "id": 1,
+                "nametag": "Address One Nametag One",
+                "votes": [
+                    {
+                        "id": 1,
+                        "value": true,
+                        "owned": true
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "nametag": "Address One Nametag Two",
+                "votes": [
+                    {
+                        "id": 2,
+                        "value": true,
+                        "owned": false
+                    }
+                ]
+            }
+        ]
+
+
 POST    /{address}/tags                   Create a new nametag for a given address and auto-upvote it
+    Request Body  
+    
+        {
+            "nametag": "Test Address One"
+        }
+
+    Response Body  
+        {
+            "id": 1,
+            "nametag": "Test Address One",
+            "votes": [
+                {
+                    "id": 1,
+                    "value": true,
+                    "owned": true
+                },
+                ...
+            ]
+        }
+
 
 GET     /{address}/tags/{tag_id}/votes    Return all votes for all nametags of a given address
 GET     /{address}/tags/{tag_id}/votes    Returns all votes for a given address and nametag
