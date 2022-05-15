@@ -56,30 +56,22 @@ GET     /{address}/tags                   Return all nametags and their votes fo
         {}  
 
     Response Body  
-        [
-            {
-                "id": 1,
-                "nametag": "Address One Nametag One",
-                "votes": [
-                    {
-                        "id": 1,
-                        "value": true,
-                        "owned": true
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "nametag": "Address One Nametag Two",
-                "votes": [
-                    {
-                        "id": 2,
-                        "value": true,
-                        "owned": false
-                    }
-                ]
-            }
-        ]
+     [
+        {
+            "id": 1,
+            "nametag": "Address One Nametag One",
+            "upvotes": 10,
+            "downvotes": 2,
+            "owned": false,
+        },
+        {
+            "id": 2,
+            "nametag": "Address One Nametag Two",
+            "upvotes": 10,
+            "downvotes": 2,
+            "owned": true,
+        }
+    ]
 
 
 POST    /{address}/tags                   Create a new nametag for a given address and auto-upvote it
